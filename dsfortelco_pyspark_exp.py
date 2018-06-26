@@ -65,7 +65,7 @@ model.write().overwrite().save("models/spark")
 !hdfs dfs -get models/spark models/
 !tar -cvf models/spark_rf.tar models/spark
 
-cdsw.track_file("models/spark_rf.tar")
+cdsw.track_file("/home/cdsw/models/spark_rf.tar")
 
 spark.stop()
 
