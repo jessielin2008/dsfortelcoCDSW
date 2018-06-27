@@ -26,5 +26,5 @@ def predict(args):
 #                    "total_intl_charge","number_customer_service_calls"
 predict({
   "feature": "no, 128, 25, 256, 110, 197.4, 50, 244.7, 91, 10, 5, 1"
-})
+}) 
 
