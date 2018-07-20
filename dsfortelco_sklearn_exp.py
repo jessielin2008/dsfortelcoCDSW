@@ -69,6 +69,6 @@ print(auroc, ap)
 cdsw.track_metric("auroc", auroc)
 cdsw.track_metric("ap", ap)
 
-pickle.dump(randF, open("models/sklearn_rf.pkl","wb"))
+pickle.dump(randF, open("/home/cdsw/models/sklearn_rf.pkl","wb"))
 
 cdsw.track_file("models/sklearn_rf.pkl")
