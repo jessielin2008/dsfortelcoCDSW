@@ -9,7 +9,7 @@ spark = SparkSession.builder \
       .getOrCreate()
     
 schemaData = StructType([StructField("state", StringType(), True),StructField("account_length", DoubleType(), True),StructField("area_code", StringType(), True),StructField("phone_number", StringType(), True),StructField("intl_plan", StringType(), True),StructField("voice_mail_plan", StringType(), True),StructField("number_vmail_messages", DoubleType(), True),     StructField("total_day_minutes", DoubleType(), True),     StructField("total_day_calls", DoubleType(), True),     StructField("total_day_charge", DoubleType(), True),     StructField("total_eve_minutes", DoubleType(), True),     StructField("total_eve_calls", DoubleType(), True),     StructField("total_eve_charge", DoubleType(), True),     StructField("total_night_minutes", DoubleType(), True),     StructField("total_night_calls", DoubleType(), True),     StructField("total_night_charge", DoubleType(), True),     StructField("total_intl_minutes", DoubleType(), True),     StructField("total_intl_calls", DoubleType(), True),     StructField("total_intl_charge", DoubleType(), True),     StructField("number_customer_service_calls", DoubleType(), True),     StructField("churned", StringType(), True)])
-raw_data = spark.read.schema(schemaData).csv('/tmp/churn.all')
+raw_data = spark.read.schema(schemaData).csv('tmp/churn.all')
 churn_data=raw_data.withColumn("intl_plan",trim(raw_data.intl_plan))
 
 reduced_numeric_cols = ["account_length", "number_vmail_messages", "total_day_calls",
@@ -62,7 +62,8 @@ model.write().overwrite().save("models/spark")
 
 !rm -r -f models/spark
 !rm -r -f models/spark_rf.tar
-!hdfs dfs -get models/spark models/
+!hdfs dfs -get models/spark 
+!hdfs dfs -get models
 !tar -cvf models/spark_rf.tar models/spark
 
 cdsw.track_file("models/spark_rf.tar")

@@ -14,7 +14,7 @@ spark = SparkSession.builder \
       .getOrCreate()
     
 schemaData = StructType([StructField("state", StringType(), True),StructField("account_length", DoubleType(), True),StructField("area_code", StringType(), True),StructField("phone_number", StringType(), True),StructField("intl_plan", StringType(), True),StructField("voice_mail_plan", StringType(), True),StructField("number_vmail_messages", DoubleType(), True),     StructField("total_day_minutes", DoubleType(), True),     StructField("total_day_calls", DoubleType(), True),     StructField("total_day_charge", DoubleType(), True),     StructField("total_eve_minutes", DoubleType(), True),     StructField("total_eve_calls", DoubleType(), True),     StructField("total_eve_charge", DoubleType(), True),     StructField("total_night_minutes", DoubleType(), True),     StructField("total_night_calls", DoubleType(), True),     StructField("total_night_charge", DoubleType(), True),     StructField("total_intl_minutes", DoubleType(), True),     StructField("total_intl_calls", DoubleType(), True),     StructField("total_intl_charge", DoubleType(), True),     StructField("number_customer_service_calls", DoubleType(), True),     StructField("churned", StringType(), True)])
-churn_data = spark.read.schema(schemaData).csv('/tmp/churn.all')
+churn_data = spark.read.schema(schemaData).csv('tmp/churn.all')
 
 reduced_churn_data= churn_data.select("account_length", "number_vmail_messages", "total_day_calls",
                      "total_day_charge", "total_eve_calls", "total_eve_charge",
@@ -69,6 +69,6 @@ print(auroc, ap)
 cdsw.track_metric("auroc", auroc)
 cdsw.track_metric("ap", ap)
 
-pickle.dump(randF, open("models/sklearn_rf.pkl","wb"))
+pickle.dump(randF, open("/home/cdsw/models/sklearn_rf.pkl","wb"))
 
-cdsw.track_file("/models/sklearn_rf.pkl")
+cdsw.track_file("/home/cdsw/models/sklearn_rf.pkl")
