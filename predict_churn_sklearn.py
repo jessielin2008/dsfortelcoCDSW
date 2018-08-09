@@ -1,7 +1,7 @@
 import pickle
 import numpy as np
 
-model = pickle.load(open("models/sklearn_rf.pkl","rb"))
+model = pickle.load(open("models/sklearn_rf.pkl","r"))
 
 def predict(args):
   print(args["feature"])

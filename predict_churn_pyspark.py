@@ -7,7 +7,7 @@ spark = SparkSession.builder \
       .master("local[*]") \
       .getOrCreate()
   
-model = PipelineModel.load("file:///home/cdsw/models/spark") 
+model = PipelineModel.load("models/spark") 
 
 features = ["intl_plan", "account_length", "number_vmail_messages", "total_day_calls",
                         "total_day_charge", "total_eve_calls", "total_eve_charge",

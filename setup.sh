@@ -1,5 +1,5 @@
 hadoop fs -mkdir tmp
 hadoop fs -put data/churn.all tmp/
 
-chmod 744 cdsw-build.sh
+chmod 755 cdsw-build.sh
 mkdir -p models/spark

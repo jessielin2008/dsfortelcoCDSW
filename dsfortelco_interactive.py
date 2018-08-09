@@ -231,4 +231,4 @@ final_predictions.select('prediction','prob').filter('prediction = 1').sort('pro
 
 zip(input_cols,model.stages[3].featureImportances.values)
 
-spark.stop()
+# spark.stop()
